@@ -1,0 +1,11 @@
+#watermark{
+  position: fixed;
+  top: 0;
+  padding: .25em .5em;
+  z-index: 9999;
+  width: 98%;
+  background: #426DA9;
+  color: #fff;
+}
+#watermark *:first-child{float: left;}
+#watermark *:last-child{float: right;font-size: 20px;line-height: 30px;}

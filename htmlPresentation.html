@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - Math Plugin</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/souq.css" id="theme">
+		<link rel="stylesheet" href="css/watermark.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div id="watermark">
+				<div>
+					<img src="img/souq-logo.png">
+					<span>UI / UX team.</span>
+				</div>
+				<span>static repo</span>
+			</div>
+
+			<div class="slides">
+
+				<section data-transition="convex">
+					<section>
+						<img src="img/content/grunt-logo.png">
+						<h1>What is Grunt?</h1>
+					</section>
+					<section>
+						<h1>Grunt is </h1>
+						<p>
+							<b>Perform tasks tool, Command-line based, based on node.js</b></br>
+							Greatly contribute to accelerating the pace of work on the sites, designed and developed.
+						</p>
+					</section>
+					<section>
+						<h1>How Do I Customize My Tasks?</h1>
+						<p>
+							Already, we’ve gotten a lot of great functionality out of Grunt, using it just as it comes.
+							</br>
+							Inside grunt.js, you’ll see that all configuring is done by passing an object literal to grunt.initConfig(). <b>Let’s look at a few of the properties of our config object.</b>
+						</p>
+					</section>
+					<section>
+						<h1>pkg</h1>
+						<p>
+							This property points to the package.json file that Grunt created in our project directory.
+						</p>
+					</section>
+					<section>
+						<h1>meta</h1>
+						<p>
+							The meta property is an object with only a single property: a banner. 
+						</p>
+					</section>
+					<section>
+						<h1>concat / min / qunit / lint / watch</h1>
+						<p>
+							I’ve grouped the next five properties together because they’re very similar. They all set options for specific tasks, the tasks they’re named after. When configuring these tasks, it’s important to note that Grunt distinguished between two types of tasks: regular tasks, and multitasks. 
+						</p>
+					</section>
+					<section>
+						<h1>difference between regular tasks and multitasks</h1>
+						<p>
+							regular tasks have only a single set of configuration options, whereas multitasks can have multiple sets of instructions (called targets).
+							</br>
+							<b>Of the five tasks I listed in the header of this section, the only one that isn’t a multitask is <i>watch.</i></b>
+						</p>
+					</section>
+					<section>
+						<h1>jshint</h1>
+						<p>
+							This property simply configures what “bad parts” JSHint looks for in your JavaScript.
+						</p>
+					</section>
+					<section>
+						<p>
+							At the very bottom of our grunt.js file, you’ll see this line:
+							</br>
+							<b>grunt.registerTask('default', 'lint qunit concat min');</b>
+							</br>
+							This is what creates our default task; you know, the one that runs when we run just grunt. It’s actually creating an alias task, and you can create as many alias tasks as you want:
+							</br>
+							<b>grunt.registerTask('src', 'lint:src qunit:src concat:src min:src');</b>
+							</br>
+							Assuming you created src targets for each of those tasks, you can now call grunt src and do exactly what you want
+						</p>
+					</section>
+					<section>
+						<h1>Third-Party Tasks</h1>
+						<p>
+							an API that allows anyone to create Grunt tasks and plugins.
+							</br>
+							if you’re interested in doing so, you should start with the Grunt plugin template (run grunt init:gruntplugin), and then read through the API docs. Once you’ve written your task, you can load it into a project by adding this line inside your project’s grunt.js file:
+							</br>
+							<b>grunt.loadTasks(PATH_TO_TASKS_FOLDER);</b>
+							</br>
+							Note that the parameter isn’t the path to the task file itself, it’s the path to the folder the task file is in.
+						</p>
+					</section>
+					<section>
+						<h1>Third-Party Tasks</h1>
+						<p>
+							However, other Grunt plugins are starting to appear, and some are available on NPM. After you install them via npm install, you’ll load them into your project with this line:
+							</br>
+							<b>grunt.loadNpmTasks(PLUGIN_NAME);</b>
+							</br>
+							Of course, you’ll want to check the plugin documentation to see what you should add to your configuration object.
+						</p>
+					</section>
+				</section>
+
+				<section data-transition="convex">
+					<section>
+						<h1>souq html repo</h1>
+					</section>
+					<section>
+						<p>
+							the plugin we used in <b>GRUNT</b> is:
+						</p>
+						<ul>
+							<li>grunt-sass: Compile Sass to CSS using Compass</li>
+							<li>grunt-contrib-watch: Automatically fill in grunt-contrib-watch configuration 'task' and 'files' properties.</li>
+							<li>grunt-contrib-copy: Compares source and destination files before calling grunt-contrib-copy.</li>
+							<li>grunt-contrib-clean: This is an alternative to the grunt-contrib-clean plugin, adding asynchronous cleaning support.</li>
+							<li>grunt-contrib-uglify: Minify JS files</li>
+							<li>assemble: Static site generator for Grunt.js, to build sites, themes, components, documentation, blogs etc..</li>
+						</ul>
+					</section>
+					<section>
+						<h1>file structure</h1>
+						<p align="left" style="font-size:14px">
+							.gitignore</br>
+							bower.json</br>
+							Gruntfile.js</br>
+							package.json</br>
+							README.md</br>
+							|-- src</br>
+							<span style="width:20px;display: inline-block;"></span>|-- assets
+							</br>
+							<span style="width:60px;display: inline-block;"></span>|-- font
+							</br>
+
+							<span style="width:60px;display: inline-block;"></span>|-- img
+							</br>
+							<span style="width:80px;display: inline-block;"></span>|-- ar
+							</br>
+							<span style="width:80px;display: inline-block;"></span>|-- en
+							</br>
+
+							<span style="width:60px;display: inline-block;"></span>|-- js
+							</br>
+							<span style="width:80px;display: inline-block;"></span>|-- ar
+							</br>
+							<span style="width:80px;display: inline-block;"></span>|-- en
+							</br>
+
+							<span style="width:60px;display: inline-block;"></span>|-- sass
+							</br>
+							<span style="width:80px;display: inline-block;"></span>|-- ar
+							</br>
+							<span style="width:80px;display: inline-block;"></span>|-- components
+							</br>
+							<span style="width:80px;display: inline-block;"></span>|-- en
+							</br>
+							<span style="width:80px;display: inline-block;"></span>|-- fonts
+							</br>
+							<span style="width:80px;display: inline-block;"></span>|-- pages
+							</br>
+
+							<span style="width:20px;display: inline-block;"></span>|-- data
+							</br>
+							<span style="width:60px;display: inline-block;"></span>|-- ar
+							</br>
+							<span style="width:60px;display: inline-block;"></span>|-- en
+							</br>
+
+							<span style="width:20px;display: inline-block;"></span>|-- includes
+							</br>
+							<span style="width:60px;display: inline-block;"></span>|-- components
+							</br>
+
+							<span style="width:20px;display: inline-block;"></span>|-- layouts
+							</br>
+							<span style="width:20px;display: inline-block;"></span>|-- pages
+
+
+
+
+							</br>
+
+						</p>
+					</section>
+				</section>
+
+				<section data-transition="convex">
+				
+						<h1>3.1</h1>
+						<ul>
+							<li>4.1</li>
+							<li>4.2</li>
+							<li>4.3</li>
+						</ul>
+					
+
+				</section>
+
+				<section data-transition="convex">
+					<h1>4</h1>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			Reveal.initialize({
+				history: true,
+				transition: 'linear'				
+			});
+
+		</script>
+
+	</body>
+</html>
